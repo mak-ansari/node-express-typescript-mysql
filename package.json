@@ -1,7 +1,7 @@
 {
-    "name": "northbloomfield",
+    "name": "nodesample",
     "version": "0.0.1",
-    "description": "",
+    "description": "Node backend setup with Express & TypeScript Framwork",
     "main": "./src/server.ts",
     "private": true,
     "scripts": {
@@ -12,7 +12,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://gitlab.com/northbloomfield/back-end.git"
+        "url": "https://github.com/mak-ansari/node-express-typescript-mysql.git"
     },
     "nodemonConfig": {
         "ignore": [
@@ -27,7 +27,7 @@
         "exec": "npm start",
         "ext": "ts"
     },
-    "author": "Maksud/Eternal",
+    "author": "Mak Ansari",
     "license": "ISC",
     "dependencies": {
         "@hapi/joi": "^17.1.1",
