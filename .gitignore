@@ -1,0 +1,8 @@
+#Folder
+node_modules
+dist
+logs/*
+
+#File
+.env
+package-lock.json
