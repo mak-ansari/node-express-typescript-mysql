@@ -19,7 +19,7 @@ To build and run this app locally you will need a few things:
 # Getting started
 - Clone the repository
 ```
-git clone https://gitlab.com/northbloomfield/back-end.git <project_name>
+git clone https://github.com/mak-ansari/node-express-typescript-mysql.git <project_name>
 ```
 - Install dependencies
 ```
