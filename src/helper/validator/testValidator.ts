@@ -7,7 +7,7 @@ import { validationOptions } from "./_index";
 //add imput data validation
 export class TestValidator {
 
-    public async createTestValidator(req: Request, res: Response, next: NextFunction) {
+    public async testCreateValidator(req: Request, res: Response, next: NextFunction) {
         try {
             const schema = Joi.object({
                 id: Joi.number().required()

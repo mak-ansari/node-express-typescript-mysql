@@ -1,9 +1,10 @@
 import { Test } from './../models/test.model';
 
+
 export class TestModelHelper {
 
     public async findAllTest() {
-        return await Test.findAll<Test>({});
+        return await Test.find();
     }
 
 }

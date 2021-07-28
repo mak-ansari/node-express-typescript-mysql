@@ -1,7 +1,10 @@
 import { Application, Request, Response } from 'express';
 import { StatusCodes, getReasonPhrase } from 'http-status-codes';
 
-import { testRouter } from './test.Router';
+import { mediator } from './../config/event.config';
+
+import { adminRouter } from './adminRouter';
+import { websiteRouter } from './websiteRouter';
 
 export class ApiRoute {
 
@@ -17,11 +20,14 @@ export class ApiRoute {
             message: getReasonPhrase(StatusCodes.OK)
         }));
 
-        this.app.use('/test-api', testRouter);
+        this.app.use('/admin-api', adminRouter);
+        this.app.use('/web-api', websiteRouter);
 
         this.app.all('*', (req: Request, res: Response) => res.status(StatusCodes.NOT_FOUND).send({
             statusCode: StatusCodes.NOT_FOUND,
             error: getReasonPhrase(StatusCodes.NOT_FOUND)
         }));
+
+        mediator.emit('route.ready', this.app);
     }
 }

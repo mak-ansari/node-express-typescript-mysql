@@ -1,47 +1,49 @@
-// import { Sequelize, STRING, UUID, Deferrable, BuildOptions } from 'sequelize';
-import { Model, DataTypes, BuildOptions } from "sequelize";
+import * as mongoose from "mongoose";
 
-import sequelize from './../_index';
+export type TestDocument = mongoose.Document & {
+    email: string;
 
-export class Test extends Model {
-    public id!: number;
-    public name!: string;
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    facebook: string;
+    tokens: AuthToken[];
+
+    profile: {
+        name: string;
+        gender: string;
+        location: string;
+        website: string;
+        picture: string;
+    };
+
+    gravatar: (size: number) => string;
 }
 
-export class TestModel {
-    id: string
-    name: string
-    pwd: string
-    createdAt: Date
-    updatedAt: Date
+export interface AuthToken {
+    accessToken: string;
+    kind: string;
 }
 
-Test.init(
+const testSchema = new mongoose.Schema<TestDocument>(
     {
-        id: {
-            type: DataTypes.INTEGER.UNSIGNED,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        name: {
-            type: new DataTypes.STRING(128),
-            allowNull: false,
-        },
-        pwd: {
-            type: new DataTypes.STRING(128),
-            allowNull: false,
-        },
+        email: { type: String, unique: true },
+
+        facebook: String,
+        twitter: String,
+        google: String,
+        tokens: Array,
+    
+        profile: {
+            name: String,
+            gender: String,
+            location: String,
+            website: String,
+            picture: String
+        }
     },
-    {
-        sequelize: sequelize, // this bit is important
-        modelName: 'Test',
-        tableName: 'tests'
-    }
-)
+    { timestamps: true },
+);
 
-// Test.sync().then(() => console.log("Test table created"));
-// Test.belongsTo(Language, {
-//     foreignKey: 'languageId'
-// });
+testSchema.methods.gravatar = (size: number = 200): String => {
+    return `https://gravatar.com/avatar/?s=${size}&d=retro`;
+};
+
+export const Test = mongoose.model<TestDocument>("Test", testSchema);

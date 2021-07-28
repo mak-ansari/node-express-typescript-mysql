@@ -29,4 +29,16 @@ export class TestController {
         }
     }
 
+    public async getTestList(req: Request, res: Response) {
+        
+        try {
+            
+            const data = await testModelHelper.findAllTest();
+            sendSuccess(res, data);
+
+        } catch (error) {
+            sendError(res, error, error.code, StatusCodes.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

@@ -1,6 +1,9 @@
-# Node Sample
+https://khalilstemmler.com/blogs/typescript/node-starter-project/
+https://github.com/stemmlerjs/simple-typescript-starter
 
-#### Node | Express | TypeScript | MySql ####
+# Flatbee
+
+#### Node | Express | TypeScript | MongoDB ####
 
 ## Quick summary ##
 This project contains configuration & source code files for a node Application
@@ -9,14 +12,14 @@ This project contains configuration & source code files for a node Application
 To build and run this app locally you will need a few things:
 - Install [Node.js 12.x](https://nodejs.org/en/)
 - Install [TypeScript 4.x](https://www.typescriptlang.org/download/)
-- Install [MySql 5.6](https://www.mysql.com/downloads/)
+- Install [MongoDB v4.2.8](https://docs.mongodb.com/manual/installation/)
 - Install [VS Code](https://code.visualstudio.com/)
 
 
 # Getting started
 - Clone the repository
 ```
-git clone https://github.com/mak-ansari/node-express-typescript-mysql.git <project_name>
+git clone https://gitlab.com/northbloomfield/back-end.git <project_name>
 ```
 - Install dependencies
 ```
@@ -54,25 +57,33 @@ Finally, navigate to `http://localhost:3000` and you should see the api being se
 │   ├── config
 │   │   ├── schema
 │   │   │   ├── */schema
-│   │   │   ├── mail.
 │   │   │   ├── pagination.ts
 │   │   ├── db.config.ts
 │   ├── controller
 │   │   ├── _index.ts
 │   │   ├── testController.ts
+│   │   ├── administratorController.ts
 │   │   ├── .
 │   ├── dbo
 │   │   ├── _index.ts
 │   │   ├── helpers
 │   │   │   ├── test.model.helper.ts
+│   │   ├── ├── administrator.model.helper.ts
 │   │   ├── ├──.
 │   │   ├── models
 │   │   │   ├── test.model.ts
+│   │   ├── ├── administrator.model.ts
 │   │   ├── ├──.
 │   ├── helper
+│   │   ├── component
+│   │   │   ├── applicationMailService.ts
+│   │   ├── emailTemplate
+│   │   │   ├── contact.ejs
+│   │   │   ├── maintenance.ejs
 │   │   ├── validator
 │   │   │   ├── testValidator.ts
-│   │   │   ├── .
+│   │   ├── authHelper.ts
+│   │   ├── emailHelper.ts
 │   │   ├── responseHelper.ts
 │   │   ├── paginationHelper.ts
 │   │   ├── .
@@ -98,7 +109,6 @@ Finally, navigate to `http://localhost:3000` and you should see the api being se
         * **`db.config.ts`** : Database configuration
     * **`controller`** : Common AppSync Resources
         * **`_index.ts`** : Parent router with child route configurations
-        * **`testController.ts`** : Test controller
         * **`.`** : Keep adding other controllers
     * **`dbo`** : Database operations
         * **`_index.ts`** : Database config & settings
@@ -109,15 +119,18 @@ Finally, navigate to `http://localhost:3000` and you should see the api being se
             * **`test.model.ts`** : Test model
             * **`.`** : Keep adding other models
     * **`helper`** : Comman helpers
+        * **`component`** : 
+            * **`applicationMailService.ts`** : application mailService
+        * **`emailTemplate`** : 
+            * **`contact.ejs`** : contact ejs
+            * **`maintenance.ejs`** : maintenance ejs
         * **`validator`** : 
-            * **`testValidator.ts`** : add/edit test validation
-            * **`.`** : eep adding other validation
+            * **`testValidator.ts`** : add/edit country validation
         * **`paginationHelper.ts`** : Get pagingData
-        * **`responseHelper.ts`** : Lambda functions & configuration _[Not in use]_
+        * **`responseHelper.ts`** : Lambda functions & configuration
         * **`.`** : keep adding other helpers
     * **`routes`** : 
         * **`_index.ts`** : Parent router
-        * **`testRouter.ts`** : Sample test router
     * **`app.ts`** : Application config & setup
     * **`server.ts`** : Http Server creator
 * **`.env.example`** : Environment variables (Create .env file)
